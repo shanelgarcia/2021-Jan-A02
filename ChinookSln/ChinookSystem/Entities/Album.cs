@@ -37,5 +37,11 @@ namespace ChinookSystem.Entities
                 _ReleaseLabel = string.IsNullOrEmpty(value) ? null : value;
             }
         }
+
+        //[NotMapped] annon are also allowed
+        //Navigational properties are not real data. Keyword: virtual 
+
+        public virtual Artist Artist { get; set; }
+
     }
 }
