@@ -24,9 +24,9 @@ namespace ChinookSystem.Entities
         public int ArtistID { get; set; }
 
         [Required(ErrorMessage = "Album Title is required.")]
-        public int ReleaseDate { get; set; }
+        public int ReleaseYear { get; set; }
         [StringLength(50, ErrorMessage = "Album release label is limited to 50 characters.")]
-        public string ReleaseLael
+        public string ReleaseLabel
         {
             get
             {
