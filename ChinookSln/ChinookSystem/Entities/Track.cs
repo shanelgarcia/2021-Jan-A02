@@ -14,26 +14,17 @@ namespace ChinookSystem.Entities
     [Table("Tracks")]
     internal class Track
     {
-        private string _Name;
         private string _Composer;
 
         [Key]
         public int TrackId { get; set; }
         [StringLength(200, ErrorMessage = "Track name is limited to 200 characters.")]
-        public string Name
-        {
-            get
-            {
-                return _Name;
-            }
-            set
-            {
-                _Name = string.IsNullOrEmpty(value) ? null : value;
-            }
-        }
+        public string Name { get; set; }
         public int? AlbumId { get; set; }
         public int MediaTypeId{ get; set; }
         public int? GenreId { get; set; }
+        [StringLength(220, ErrorMessage = "Composer is limited to 200 characters.")]
+
         public string Composer
         {
             get
@@ -48,8 +39,10 @@ namespace ChinookSystem.Entities
         public int Milliseconds { get; set; }
         public int? Bytes { get; set; }
         //numeric
-        public double UnitPrice{ get; set; }
+        public decimal UnitPrice{ get; set; }
 
-        public virtual ICollection<Track> Tracks { get; set; }
+        public virtual Album Album { get; set; }
+        public virtual Genre Genre { get; set; }
+        public virtual MediaType MediaType { get; set; }
     }
 }

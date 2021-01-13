@@ -32,6 +32,6 @@ namespace ChinookSystem.Entities
             }
         }
 
-        public virtual ICollection<MediaType> MediaTypes { get; set; }
+        public virtual ICollection<Track> Tracks { get; set; }
     }
 }

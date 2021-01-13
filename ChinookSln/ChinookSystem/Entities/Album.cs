@@ -42,6 +42,7 @@ namespace ChinookSystem.Entities
         //Navigational properties are not real data. Keyword: virtual 
 
         public virtual Artist Artist { get; set; }
+        public virtual ICollection<Track> Tracks { get; set; }
 
     }
 }

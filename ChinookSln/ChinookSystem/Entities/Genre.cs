@@ -11,6 +11,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ChinookSystem.Entities
 {
+    [Table("Genres")]
     internal class Genre
     {
         private string _Name;
@@ -30,6 +31,6 @@ namespace ChinookSystem.Entities
             }
         }
 
-        public virtual ICollection<Genre> Genres { get; set; }
+        public virtual ICollection<Track> Tracks { get; set; }
     }
 }
