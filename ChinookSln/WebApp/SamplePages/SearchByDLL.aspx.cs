@@ -39,5 +39,10 @@ namespace WebApp.SamplePages
             //prompt line
             ArtistList.Items.Insert(0, new ListItem("Select...", "0"));
         }
+
+        protected void ListView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
