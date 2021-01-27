@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace ChinookSystem.Entities
 {
-    public partial class ChinookSystemContext : DbContext
+    internal partial class ChinookSystemContext : DbContext
     {
         public ChinookSystemContext()
             : base("name=ChinookSystemContext")
