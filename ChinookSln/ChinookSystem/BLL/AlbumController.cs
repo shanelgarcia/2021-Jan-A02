@@ -37,13 +37,13 @@ namespace ChinookSystem.BLL
             using (var context = new ChinookSystemContext())
             {
                 IEnumerable<ArtistAlbums> results = from x in context.Albums
-                                                    where x.ArtistId == artistid
+                                                    where x.ArtistID == artistid
                                                     select new ArtistAlbums
                                                     {
                                                         Title = x.Title,
                                                         ReleaseYear = x.ReleaseYear,
                                                         ArtistName = x.Artist.Name,
-                                                        ArtistId = x.ArtistId                                                       
+                                                        ArtistId = x.ArtistID                                                       
                                                     };
                 return results.ToList();
             }
