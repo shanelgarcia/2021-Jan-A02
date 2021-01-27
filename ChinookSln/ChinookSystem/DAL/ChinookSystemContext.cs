@@ -3,7 +3,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
 
-namespace ChinookSystem.Entities
+#region Additional Namespaces
+using ChinookSystem.Entities;
+#endregion
+
+namespace ChinookSystem.DAL
 {
     internal partial class ChinookSystemContext : DbContext
     {
