@@ -42,30 +42,21 @@ namespace WebApp.SamplePages
         protected global::System.Web.UI.WebControls.LinkButton SearchAlbums;
 
         /// <summary>
-        /// Message control.
+        /// ListView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Message;
+        protected global::System.Web.UI.WebControls.ListView ListView1;
 
         /// <summary>
-        /// ArtistALbumList control.
+        /// TestODS control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView ArtistALbumList;
-
-        /// <summary>
-        /// ArtisListODS control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource ArtisListODS;
+        protected global::System.Web.UI.WebControls.ObjectDataSource TestODS;
     }
 }
