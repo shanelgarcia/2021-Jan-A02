@@ -62,7 +62,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Entities\Album.cs" />
     <Compile Include="Entities\Artist.cs" />
-    <Compile Include="Entities\ChinookSystemContext.cs" />
+    <Compile Include="DAL\ChinookSystemContext.cs" />
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="Entities\Employee.cs" />
     <Compile Include="Entities\Genre.cs" />
@@ -80,9 +80,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DAL\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
