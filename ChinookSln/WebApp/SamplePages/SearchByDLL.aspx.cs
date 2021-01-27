@@ -15,13 +15,14 @@ namespace WebApp.SamplePages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!Page.IsPostBack)
+            Message.Text = "";
+            if (!Page.IsPostBack)
             {
                 LoadArtistList();
             }
         }
 
-        private void LoadArtistList()
+        protected void LoadArtistList()
         {
             ArtistController sysmgr = new ArtistController();
             List<SelectionList> info = sysmgr.Artists_DDList();
@@ -43,6 +44,24 @@ namespace WebApp.SamplePages
         protected void ListView1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void SearchAlbums_Click(object sender, EventArgs e)
+        {
+            if(ArtistList.SelectedIndex == 0)
+            {
+                //if its pointing to the first line/prompt
+                Message.Text = "Select an artist for the search.";
+                ArtistALbumList.DataSource = null;
+                ArtistALbumList.DataBind();
+            }
+            else
+            {
+                AlbumController sysmgr = new AlbumController();
+                List<ChinookSystem.ViewModels.ArtistAlbums> info = sysmgr.Albums_GetAlbumsForArtist(int.Parse(ArtistList.SelectedValue));
+                ArtistALbumList.DataSource = info;
+                ArtistALbumList.DataBind();
+            }
         }
     }
 }
