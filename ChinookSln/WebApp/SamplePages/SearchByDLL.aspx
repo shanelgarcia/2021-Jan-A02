@@ -44,7 +44,7 @@
                 </EmptyDataTemplate>
             </asp:GridView>
 
-            <asp:ObjectDataSource ID="Artist_ListODS" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="Artists_DDList" TypeName="ChinookSystem.BLL.ArtistController"></asp:ObjectDataSource>
+            <asp:ObjectDataSource ID="Artist_ListODS" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="Artists_DDList" TypeName="ChinookSystem.BLL.ArtistController" OnSelected="SelectCheckForException"></asp:ObjectDataSource>
         </div>
     </div>
 </asp:Content>

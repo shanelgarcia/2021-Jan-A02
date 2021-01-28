@@ -21,6 +21,10 @@ namespace WebApp.SamplePages
             }
         }
         #region Error Handling ODS
+        protected void SelectCheckForException(object sender, ObjectDataSourceStatusEventArgs e)
+        {
+            MessageUserControl.HandleDataBoundException(e);
+        }
         #endregion
         private void LoadArtistList()
         {
