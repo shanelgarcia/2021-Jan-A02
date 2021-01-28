@@ -20,7 +20,8 @@ namespace WebApp.SamplePages
                 LoadArtistList();
             }
         }
-
+        #region Error Handling ODS
+        #endregion
         private void LoadArtistList()
         {
             ArtistController sysmgr = new ArtistController();
@@ -43,6 +44,26 @@ namespace WebApp.SamplePages
         protected void ListView1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void SearchAlbums_Click(object sender, EventArgs e)
+        {
+            if(ArtistList.SelectedIndex == 0)
+            {
+                MessageUserControl.ShowInfo("Must select an artist.");
+                ArtistAlbum_Grid.DataSource = null;
+                ArtistAlbum_Grid.DataBind();
+            }
+            else
+            {
+                MessageUserControl.TryRun(() =>
+                {
+                    AlbumController sysmgr = new AlbumController();
+                    List<ChinookSystem.ViewModels.ArtistAlbums> info = sysmgr.Albums_GetAlbumsForArtist(int.Parse(ArtistList.SelectedValue));
+                    ArtistAlbum_Grid.DataSource = info;
+                    ArtistAlbum_Grid.DataBind();
+                },"Success title","Success message");
+            }
         }
     }
 }

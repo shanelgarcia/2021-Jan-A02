@@ -12,7 +12,7 @@ namespace ChinookSystem.DAL
     internal partial class ChinookSystemContext : DbContext
     {
         public ChinookSystemContext()
-            : base("name=ChinookSystemContext")
+            : base("name=ChinookDB")
         {
         }
 
