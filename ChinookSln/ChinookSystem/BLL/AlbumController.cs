@@ -15,6 +15,7 @@ namespace ChinookSystem.BLL
     [DataObject]
     public class AlbumController
     {
+        #region QUERY
         [DataObjectMethod(DataObjectMethodType.Select,false)]
         public List<ArtistAlbums> Albums_GetArtistAlbums()
         {
@@ -48,5 +49,106 @@ namespace ChinookSystem.BLL
                 return results.ToList();
             }
         }
+
+        //query all album
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<AlbumItem> Albums_List()
+        {
+            using (var context = new ChinookSystemContext())
+            {
+                IEnumerable<AlbumItem> results = from x in context.Albums
+                                                 select new AlbumItem
+                                                 {
+                                                     AlbumId = x.AlbumId,
+                                                        Title = x.Title,
+                                                        ReleaseYear = x.ReleaseYear,
+                                                        ArtistId = x.ArtistId,
+                                                        ReleaseLabel = x.ReleaseLabel
+                                                    };
+                return results.ToList();
+            }
+        }
+
+        //query album by artist
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public AlbumItem Albums_FindById(int albumid)
+        {
+            using (var context = new ChinookSystemContext())
+            {
+                var results = (from x in context.Albums
+                                    where x.AlbumId == albumid
+                                                    select new AlbumItem
+                                                    {
+                                                        AlbumId = x.AlbumId,
+                                                        Title = x.Title,
+                                                        ReleaseYear = x.ReleaseYear,
+                                                        ArtistId = x.ArtistId,
+                                                        ReleaseLabel = x.ReleaseLabel
+                                                    }).FirstOrDefault();
+                return results;
+            }
+        }
+
+        #endregion
+
+        #region CRUD
+
+        //add
+        [DataObjectMethod(DataObjectMethodType.Insert, false)]
+        public int Album_Add(AlbumItem item)
+        {
+            using (var context = new ChinookSystemContext())
+            {
+                Album addItem = new Album()
+                {
+                    Title = item.Title,
+                    ReleaseYear = item.ReleaseYear,
+                    ArtistId = item.ArtistId,
+                    ReleaseLabel = item.ReleaseLabel
+                };
+                context.Albums.Add(addItem);
+                context.SaveChanges();
+                return addItem.AlbumId;
+            }
+        }
+
+        //update
+        [DataObjectMethod(DataObjectMethodType.Update, false)]
+        public void Album_Update(AlbumItem item)
+        {
+            using (var context = new ChinookSystemContext())
+            {
+                Album updateItem = new Album()
+                {
+                    AlbumId = item.AlbumId,
+                    Title = item.Title,
+                    ReleaseYear = item.ReleaseYear,
+                    ArtistId = item.ArtistId,
+                    ReleaseLabel = item.ReleaseLabel
+                };
+                context.Entry(updateItem).State = System.Data.Entity.EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
+
+        //delete
+       
+        public void Album_Delete(int albumid)
+        {
+            using (var context = new ChinookSystemContext())
+            {
+                var exists = context.Albums.Find(albumid);
+                context.Albums.Remove(exists);
+                context.SaveChanges();
+            }
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Remove, false)]
+        public void Album_Delete(AlbumItem item)
+        {
+            Album_Delete(item.AlbumId);            
+        }
+
+        #endregion
     }
 }
