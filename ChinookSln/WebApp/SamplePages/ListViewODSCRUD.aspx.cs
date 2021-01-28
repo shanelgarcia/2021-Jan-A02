@@ -11,7 +11,49 @@ namespace WebApp.SamplePages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
+
+        #region MessageUserControl for ODS Listview
+        protected void SelectCheckForException(object sender, ObjectDataSourceStatusEventArgs e)
+        {            
+                MessageUserControl.HandleDataBoundException(e);
+            
+        }
+        protected void InsertCheckForException(object sender, ObjectDataSourceStatusEventArgs e)
+        {
+            if (e.Exception == null)
+            {
+                MessageUserControl.ShowInfo("Success", "Album has been added!");
+            }
+            else
+            {
+                MessageUserControl.HandleDataBoundException(e);
+            }
+        }
+        protected void UpdateCheckForException(object sender, ObjectDataSourceStatusEventArgs e)
+        {
+            if (e.Exception == null)
+            {
+                MessageUserControl.ShowInfo("Success", "Album has been updated!");
+            }
+            else
+            {
+                MessageUserControl.HandleDataBoundException(e);
+            }
+        }
+        protected void RemoveCheckForException(object sender, ObjectDataSourceStatusEventArgs e)
+        {
+            if (e.Exception == null)
+            {
+                MessageUserControl.ShowInfo("Success", "Album has been removed!");
+            }
+            else
+            {
+                MessageUserControl.HandleDataBoundException(e);
+            }
+        }
+
+        #endregion
     }
 }
